@@ -14,7 +14,7 @@ import fileinput
 import codecs
 
 __author__ = 'Eddie Antonio Santos'
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 __license__ = 'MIT'
 
 # Set of ASCII and Latin-1 characters.
