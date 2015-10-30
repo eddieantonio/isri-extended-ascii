@@ -90,7 +90,7 @@ def unextend(text):
 def to_utf8():
     for line in fileinput.input():
         text = unicode(line, 'latin-1')
-        print(unextend(text))
+        sys.stdout.write(unextend(text))
 
 def main():
     program_name = os.path.basename(sys.argv[0])
