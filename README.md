@@ -19,7 +19,7 @@ with the ISRI Analytical Tools. Use this executable as a simple filter:
 
     extended_ascii < utf8-file > extended-ascii-file
 
-Similarly, `to_utf8` reverses this operation:
+`to_utf8` reverses this `extended_ascii`, converting to UTF-8:
 
     < original-file extended_ascii | to_utf8 > utf8-file
 
