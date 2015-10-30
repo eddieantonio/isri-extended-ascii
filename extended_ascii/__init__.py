@@ -2,10 +2,9 @@
 # -*- coding: UTF-8 -*-
 
 """
-Exports anything passed in as ISRI Extended ASCII, which is a Latin-1 based
-encoding which allows for Unicode BMP escapes. Astral code points are
-impossible to express in this scheme, lest one wishes to restort to surrogate
-pairs (yuck!).
+Exports anything passed in as ISRI Extended ASCII, a Latin-1 based encoding
+which allows for Unicode BMP escapes. Astral code points are impossible to
+express in this scheme, lest one wishes to resort to surrogate pairs (yuck!).
 """
 
 import os
@@ -13,6 +12,10 @@ import re
 import sys
 import fileinput
 import codecs
+
+__author__ = 'Eddie Antonio Santos'
+__version__ = '1.0.0'
+__license__ = 'MIT'
 
 # Set of ASCII and Latin-1 characters.
 PRINTABLE  = set(unichr(codepoint) for codepoint in range(0x20, 0x7F))
