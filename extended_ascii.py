@@ -73,15 +73,16 @@ def extended_ascii():
             stdout.write(byte_string)
 
 def unextend(text):
-    u"""
-    >>> print(unextend("A<03A9><05D0>"))
-    AΩא
+    ur"""
+    >>> print(unextend(r"A<\n><03A9><05D0>"))
+    A
+    Ωא
     """
     def replacement(match):
         code_point, = match.groups()
         return unichr(int(code_point, base=16))
 
-    return re.sub('<([0-9A-F]{2,4})>', replacement, text)
+    return re.sub('<([0-9A-F]{2,4})>', replacement, text).replace(r'<\n>', '\n')
 
 def to_utf8():
     for line in fileinput.input():
