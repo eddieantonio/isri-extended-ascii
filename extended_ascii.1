@@ -1,0 +1,33 @@
+.TH "EXTENDED_ASCII" "1" "October 20, 2015" "Extended ASCII" ""
+.SH NAME
+.PP
+extended_ascii \- convert UTF\-8 to ISRI Extended ASCII
+.SH SYNOPSIS
+.PP
+extended_ascii [\f[I]input\-file\f[]]
+.SH DESCRIPTION
+.PP
+extended_ascii converts from UTF\-8 to extended ASCII format, for use
+with the ISRI Analytical Tools.
+Use this executable as a simple filter:
+.IP
+.nf
+\f[C]
+extended_ascii\ <\ utf8\-file\ >\ extended\-ascii\-file
+\f[]
+.fi
+.PP
+extended_ascii only knows UTF\-8.
+If your files are in another encoding, use a tool like iconv to convert
+the file to UTF\-8, and then pipe it through extended_ascii:
+.IP
+.nf
+\f[C]
+iconv\ \-t\ utf\-8\ input.txt\ |\ extended_ascii\ >\ output.txt
+\f[]
+.fi
+.SH LICENSE
+.PP
+MIT licensed.
+.SH AUTHORS
+Eddie Antonio Santos.
