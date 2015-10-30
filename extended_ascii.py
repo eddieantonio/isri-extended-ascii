@@ -9,6 +9,7 @@ pairs (yuck!).
 """
 
 import os
+import re
 import sys
 import fileinput
 import codecs
@@ -18,7 +19,7 @@ PRINTABLE  = set(unichr(codepoint) for codepoint in range(0x20, 0x7F))
 PRINTABLE |= set(unichr(codepoint) for codepoint in range(0xA1, 0x100))
 
 def to_extended_ascii(character):
-    r"""
+    ur"""
     >>> print(to_extended_ascii('A'))
     A
     >>> len(to_extended_ascii('Ä'))
@@ -59,7 +60,7 @@ def to_extended_ascii(character):
         # Use <xx> for control characters.
         return u'<%02X>' % (codepoint,)
 
-def main():
+def extended_ascii():
     # Open stdout in binary mode. Let's write some raw bytes!
     stdout = os.fdopen(sys.stdout.fileno(), 'wb')
     sys.stdout.close()
@@ -70,6 +71,29 @@ def main():
             # Convert it to extended ASCII
             byte_string = to_extended_ascii(char).encode('latin-1')
             stdout.write(byte_string)
+
+def unextend(text):
+    u"""
+    >>> print(unextend("A<03A9><05D0>"))
+    AΩא
+    """
+    def replacement(match):
+        code_point, = match.groups()
+        return unichr(int(code_point, base=16))
+
+    return re.sub('<([0-9A-F]{2,4})>', replacement, text)
+
+def to_utf8():
+    for line in fileinput.input():
+        text = unicode(line, 'latin-1')
+        print(unextend(text))
+
+def main():
+    program_name = os.path.basename(sys.argv[0])
+    if program_name == 'to_utf8':
+        to_utf8()
+    else:
+        extended_ascii()
 
 if __name__ == '__main__':
     main()
