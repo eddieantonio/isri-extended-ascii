@@ -13,7 +13,7 @@ Install (Homebrew)
     $ brew tap eddieantonio/eddieantonio
     $ brew install extended_ascii
 
---------------
+-------------
 Install (pip)
 -------------
 
