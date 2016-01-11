@@ -2,6 +2,10 @@
 extended_ascii - convert UTF-8 → Extended ASCII
 ***********************************************
 
+**DEPRECATED!** Use `isri-ocr-evauation-tools 6.0`__ with built-in support for UTF-8.
+
+.. __: https://github.com/eddieantonio/isri-ocr-evaluation-tools
+
 Converts UTF-8 text to extended ASCII and back again.
 
 ------------------
